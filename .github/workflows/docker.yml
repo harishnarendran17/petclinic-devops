@@ -11,15 +11,16 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
+          distribution: 'temurin'
           java-version: '17'
 
       - name: Build with Maven
-        run: mvn clean package
+        run: ./mvnw clean package
 
       - name: Build Docker Image
         run: docker build -t hrsh7078/petclinic:latest .
